@@ -1,24 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
+import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+
+import Todos from './modules/todos/Todos'
+
 import './App.css';
+
+
+const theme = createMuiTheme({
+    palette: {
+        type: 'dark',
+    },
+});
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <ThemeProvider theme={theme}>
+            <div className='main'>
+                <Container>
+                    <Grid container justify='center'>
+                        <Grid item md={6}>
+                            <Todos />
+                        </Grid>
+                    </Grid>
+                </Container>
+
+            </div>
+        </ThemeProvider>
+
+
     </div>
   );
 }
